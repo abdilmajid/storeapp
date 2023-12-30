@@ -11,6 +11,7 @@ RUN yarn install
 
 COPY --chown=app:app . .
 
+# rewrite using ansible templates
 ENV DATABASE_URL="192.168.50.5"
 ENV DATABASE_PORT=5432
 ENV DATABASE="storeapp"

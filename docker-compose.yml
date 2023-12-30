@@ -8,11 +8,12 @@ services:
     # restart: unless-stopped
     ports:
       - '4000:4000'
-    volumes:
-      - ./store-web:/app:Z
-      - /app/node_modules
-    networks: 
-      - store-network
+    # issues when adding volumes
+    # volumes:
+    #   - ./store-web:/app:Z
+    #   - /app/node_modules
+    # networks: 
+    #   - store-network
 
   store-api:
     build: ./store-api
@@ -20,13 +21,13 @@ services:
     # restart: unless-stopped
     ports:
       - '4001:4001'
-    volumes:
-      - ./store-api:/app:Z
-      - /app/node_modules
+    # volumes:
+    #   - ./store-api:/app:Z
+    #   - /app/node_modules
     depends_on:
       - store-db
-    networks: 
-      - store-network
+    # networks: 
+    #   - store-network
 
   store-db:
     build: ./store-db
@@ -34,32 +35,30 @@ services:
     restart: unless-stopped
     ports:
       - '5432:5432'
-    networks: 
-      - store-network
+    # networks: 
+    #   - store-network
     volumes:
     # here we create and link persistant postgres database, so if image is deleted the data is not lost
       - db:/var/lib/postgresql/data:Z
-    # here we create our initial tables
-      - ./store-db/store.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
     
-  nginx:
-    build: ./nginx
-    container_name: nginx
-    # restart: unless-stopped
-    ports:
-      - '8080:80'
-    depends_on:
-      - store-web
-      - store-api
-    networks: 
-      - store-network
+  # nginx:
+  #   build: ./nginx
+  #   container_name: nginx
+  #   # restart: unless-stopped
+  #   ports:
+  #     - '8080:8080'
+  #   depends_on:
+  #     - store-web
+  #     - store-api
+  #   networks: 
+  #     - store-network
 
 volumes:
   db:
     driver: local
 
-networks: 
-  store-network:
-    driver: bridge
-  # face-network:
-  #   driver: bridge
+# networks: 
+#   store-network:
+#     driver: bridge
+
