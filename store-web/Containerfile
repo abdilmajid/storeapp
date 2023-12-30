@@ -1,0 +1,43 @@
+FROM node:20.3.0-alpine3.18
+
+RUN addgroup app && adduser -G app -S app
+RUN mkdir /app && chown app:app /app
+USER app
+
+WORKDIR /app
+COPY --chown=app:app package.json .
+COPY --chown=app:app yarn.lock .
+RUN yarn install
+COPY --chown=app:app . .
+
+ENV PORT=4000
+ENV REACT_APP_API_CALL=http://192.168.50.5:4001/api
+ENV NODE_OPTIONS=--openssl-legacy-provider
+
+EXPOSE 4000
+RUN yarn run build
+RUN yarn global add serve
+
+CMD ["yarn", "run", "server"]
+
+
+# FROM node:20.3.0-alpine3.18 as build
+# WORKDIR /app
+# COPY package.json .
+# COPY yarn.lock .
+# RUN yarn install 
+
+# COPY . .
+# ENV NODE_OPTIONS=--openssl-legacy-provider
+# RUN yarn run build
+
+# FROM nginx:stable-alpine3.17-slim
+# COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+# COPY --from=build /app/build /usr/share/nginx/html
+# ENV REACT_APP_API_CALL=http://store.abdil.ca/api
+# EXPOSE 4000
+
+# CMD ["nginx", "-g", "daemon off;"]
+
+
+

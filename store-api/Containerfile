@@ -1,0 +1,23 @@
+FROM node:20.3.0-alpine3.18
+
+RUN addgroup app && adduser -G app -S app
+RUN mkdir /app && chown app:app /app
+USER app
+
+WORKDIR /app
+COPY --chown=app:app package.json .
+COPY --chown=app:app yarn.lock .
+RUN yarn install
+
+COPY --chown=app:app . .
+
+ENV DATABASE_URL="192.168.50.5"
+ENV DATABASE_PORT=5432
+ENV DATABASE="storeapp"
+ENV DATABASE_USER="app"
+ENV DATABASE_PASSWORD=""
+ENV PORT=4001
+EXPOSE 4001
+
+
+CMD ["yarn", "start"]

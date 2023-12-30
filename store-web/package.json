@@ -1,0 +1,47 @@
+{
+  "name": "react-redux-onlinestore",
+  "version": "1.0.0",
+  "private": false,
+  "dependencies": {
+    "es6-promise": "^4.2.5",
+    "formik": "^1.4.1",
+    "isomorphic-fetch": "^3.0.0",
+    "react": "^16.6.1",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.6.1",
+    "react-redux": "^5.1.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1",
+    "redux": "^4.0.1",
+    "redux-form": "^7.4.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "server": "serve -s -n -p 4000 build",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdilmajid/react-OnlineStore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdilmajid/react-OnlineStore/issues"
+  },
+  "homepage": ""
+}

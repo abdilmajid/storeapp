@@ -1,0 +1,9 @@
+FROM docker.io/library/postgres:14.8-alpine3.18
+
+RUN addgroup app && adduser -G app -S app
+
+ENV POSTGRES_USER=app
+ENV POSTGRES_DB=storeapp
+ENV POSTGRES_HOST_AUTH_METHOD=trust
+
+COPY ./store.sql /docker-entrypoint-initdb.d/create_tables.sql

@@ -1,0 +1,23 @@
+{
+  "name": "store2-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.16.4",
+    "nodemon": "^2.0.21",
+    "path": "^0.12.7",
+    "pg": "^8.10.0",
+    "pg-promise": "^11.4.1",
+    "yarn": "^1.22.21"
+  }
+}
