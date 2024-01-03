@@ -10,12 +10,12 @@ COPY --chown=app:app yarn.lock .
 RUN yarn install
 COPY --chown=app:app . .
 
-ENV PORT=4000
+ENV PORT=3000
 # rewrite address using ansible templates
-ENV REACT_APP_API_CALL=http://192.168.50.5:4001/api 
+ENV REACT_APP_API_CALL=http://192.168.50.5:3001/api 
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
-EXPOSE 4000
+EXPOSE 3000
 RUN yarn run build
 RUN yarn global add serve
 

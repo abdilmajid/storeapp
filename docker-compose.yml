@@ -7,7 +7,7 @@ services:
     tty: true
     # restart: unless-stopped
     ports:
-      - '4000:4000'
+      - '3000:4000'
     # issues when adding volumes
     networks: 
       - store-network
@@ -17,7 +17,7 @@ services:
     container_name: store-api
     # restart: unless-stopped
     ports:
-      - '4001:4001'
+      - '3001:4001'
     depends_on:
       - store-db
     networks: 

@@ -9,11 +9,11 @@ COPY --chown=app:app package*.json .
 RUN npm install
 COPY --chown=app:app . .
 
-ENV PORT=4000
+ENV PORT=3000
 ENV REACT_APP_API_CALL=http://192.168.50.56:8080/api
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
-EXPOSE 4000
+EXPOSE 3000
 # RUN npm run build
 
 
